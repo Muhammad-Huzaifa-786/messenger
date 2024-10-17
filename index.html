@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <link rel="shortcut icon" href="./download.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+        <div id="show"><br>
+            <input type="text" id="nameOfUser" placeholder="Your Name">
+            <button onclick="selectUser()">Add</button><br><br>
+            <input type="file" id="file--Input">
+
+        </div>
+    </center>
+    <div id="all-chat">
+        <div
+            style="position: fixed; display: flex; justify-content: center; align-items: center; width: 100vw; font-size: 30px; background-color: white; height: 40px;">
+            Messenger
+        </div><br><br>
+
+        <center>
+            <button onclick="addNew()" class="btn">Add New Contact</button>
+
+
+            <button onclick="addExist()" class="btn">Add Existing Contact</button>
+            <br><br><br>
+            <div id="all-chat-div"></div>
+        </center>
+    </div>
+
+    <div id="chat-history">
+        <div style="width: 20vw; background-color: rgb(255, 255, 255); position: fixed;">
+            <i style="background-color:transparent; color: blue; border: none; border-radius: 10px; padding: 5px 18px; font-size: x-large; border-top-left-radius: 50px; border-bottom-left-radius: 50px;"
+                onclick="gotoback()" class="fa-solid fa-chevron-left"></i>
+        </div>
+
+        <div id="nameoftop"
+            style="width: 60vw; background-color: rgb(255, 255, 255); position: fixed; left: 20vw; height: 34px; display: flex; justify-content: flex-start; align-items: center;font-weight: bold;">
+        </div>
+
+        <div id="menu">
+            <button id="menuButton"><i class="fa-solid fa-ellipsis-v"></i></button>
+            <div id="searchContainer" style="display: none;">
+                <input type="text" id="searchInput" placeholder="Search messages...">
+                <button id="clearAllButton" style="display: none;">Clear All</button>
+                <!-- <button id="delchat" onclick="delchat('')">Delete Chat</button> -->
+                <button onclick="copycollectionid()" id="collectionidofuser"></button>
+            </div>
+        </div>
+        <br><br>
+        <div id="loader" style="display: none;">Loading...</div>
+
+        <div id="imageModal" class="modal" style="display:none;">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage" />
+        </div>
+
+        <center>
+            <div id="none">
+                <div id="inputArea"
+                    style="position: fixed; bottom: 0; width: 100%; z-index: 1; padding: 10px 20px; background: white;">
+                    <textarea id="messageInput" placeholder="Type your message"></textarea>
+                    <button id="recordButton"><i class="fa-solid fa-microphone"></i></button>
+                    <audio id="audioPlayer" style="display: none;" controls></audio>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <img id="uploadButton" src="./images.png" alt="Upload Image">
+                    <button id="sendButton"
+                        style="font-size: x-large; background-color: transparent; border: none; color: green; margin-left: -10px;">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+
+                <div id="messagesContainer" style="width: 100%; margin-top: 20px; margin-bottom: 150px;"></div>
+            </div>
+
+            <i onclick="bot()"
+                style="position: fixed; bottom: 100px; right: 10px; border: 2px solid black; padding: 5px; border-radius: 29px; width: 17px; background-color: rgb(255, 233, 204);"
+                class="fa-solid fa-down-long"></i>
+        </center>
+    </div>
+
+    <script type="module" src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

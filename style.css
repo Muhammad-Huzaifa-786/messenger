@@ -1,0 +1,363 @@
+/* Add this to your CSS file or inside a <style> tag in your HTML */
+
+#chat-history {
+  display: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Push content to the bottom */
+}
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000; /* Make sure it appears above other elements */
+}
+
+
+.styleofdiv {
+  width: 100vw;
+  background-color: #cef5ff;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+  align-items: center;
+  margin-bottom: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: blue;
+  color: white;
+  width: 100px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+#inputArea {
+  display: flex;
+  align-items: center;
+  /* Center items vertically */
+  padding: 10px;
+  background: white;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+#messagesContainer div div {
+  text-align: left;
+}
+
+.delete-button,
+.edit-button {
+  width: 39px;
+  font-size: 8.5px;
+  margin-top: 15px;
+  background-color: transparent;
+  border: none;
+  padding-top: 5px;
+}
+
+.bet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.audio-message {
+  width: 95%;
+}
+
+#chat-history {
+  display: none;
+}
+
+#messageInput {
+  resize: none;
+  /* Prevent manual resizing */
+  overflow-y: auto;
+  /* Hide scrollbar */
+  height: auto;
+  width: 58%;
+  /* Allow for height adjustment */
+  min-height: 30px;
+  /* Minimum height */
+  max-height: 100px;
+  /* Maximum height */
+  font-size: larger;
+  border-radius: 15px;
+  border: 2px solid black;
+  padding: 10px;
+  box-sizing: border-box;
+  /* Include padding in width */
+  margin-left: -20px;
+}
+
+#messageInput:focus {
+  outline: none;
+  /* Remove outline when focused */
+  border: 2px solid #007bff;
+  /* Change border color on focus */
+}
+
+#sendButton {
+  /* height: 40px; */
+  /* width: 60px; */
+  font-size: larger;
+  background-color: rgb(132, 226, 255);
+  border: none;
+  border-radius: 10px;
+  margin-left: 0px;
+  /* Space between input and button */
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  /* Stack text and timestamp */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 90%;
+  word-wrap: break-word;
+  /* Break long words */
+  overflow-wrap: break-word;
+}
+
+#searchInput {
+  border: none;
+  width: 50vw;
+  margin-right: 25vw;
+  height: 30px;
+  font-size: 20px;
+}
+
+#collectionidofuser {
+  width: 204px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: hsl(146, 100%, 95%);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-top: 1px solid black;
+}
+#delchat{
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: hsl(146, 100%, 95%);
+  color: rgb(0, 0, 0);
+  border: none;
+  width: 70px;
+  margin-right: 30px;
+  margin-left: auto;
+  
+}
+#menu {
+  position: fixed;
+  width: 20vw;
+  left: calc((100vw - 205px)/2 );
+  z-index: 1;
+  color: black;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#menuButton {
+  position: fixed;
+  background-color: white !important;
+  width: 20vw ;
+  left: 80vw;
+  color: black;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+  #imgsize {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px; /* Optional: add space between image and text */
+    margin-top: -8px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+}
+
+.cont {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+}
+#none {
+  display: none;
+}
+
+.message.self {
+  background-color: #bfffda;
+  /* Light green for other messages */
+  align-self: flex-end;
+  /* Align to the right */
+  margin-left: 10%;
+  /* Align to the left */
+  width: 80%;
+  /* Align to the left */
+}
+
+#recordButton {
+  font-size: larger;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+  /* Space between input and button */
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border: 2px solid black;
+  width: 204px;
+}
+
+#searchInput {
+  border: none;
+  width: 200px;
+  /* Fixed width for the search input */
+  height: 30px;
+  font-size: 16px;
+  margin-right: 10px;
+  background-color: hsl(146, 100%, 95%);
+  /* Space between input and button */
+}
+
+#clearAllButton {
+  width: 204px;
+  /* Fixed width for clear button */
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: hsl(146, 100%, 95%);
+  /* Space between input and button */
+  color: rgb(0, 0, 0);
+  border: none;
+  border-top: 1px solid black;
+}
+
+#menuButton {
+  background-color: transparent;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.message.other {
+  align-self: flex-start;
+  margin-right: 10%;
+  width: 80%;
+  /* Align to the left */
+  background-color: #c6f2f8;
+
+}
+
+#logoutButton {
+  width: 204px;
+  /* Fixed width for clear button */
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: hsl(146, 100%, 95%);
+  /* Space between input and button */
+  color: rgb(0, 0, 0);
+  border: none;
+  border-top: 1px solid black;
+}
+
+.timestamp {
+  font-size: 12px;
+  /* Smaller font for timestamp */
+  color: rgb(87, 87, 87);
+  margin-top: 15px;
+  align-self: flex-end;
+  /* Space between message text and timestamp */
+}
+
+.message  {
+  max-width: 100%;
+  /* Adjust image width */
+  height: auto;
+  /* Maintain aspect ratio */
+  border-radius: 15px;
+  /* Optional: rounded corners */
+  margin-top: 5px;
+  /* Space above images */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: black;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  border-radius: 40px;
+  border: none;
+}
+
+#uploadButton {
+  width: 60px;
+  height: 60px;
+}
+.nameofmember {
+  font-size: 10px;
+  margin-top: -5px;
+  text-align: left;
+}
