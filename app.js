@@ -147,13 +147,100 @@ if (users !== null) {
 let div = document.getElementById('all-chat-div');
 div.innerHTML = alluser.map(all => {
     return `<div onclick="chooseChat('${all.idofuser}','${all.nameofuser}')" class="styleofdiv">
-                ${all.nameofuser}
-                <button id='delchat' onclick="delchat('${all.idofuser}'); event.stopPropagation();">Delete</button>
-            </div>`;
+    ${all.nameofuser}
+    <button id='editchat' onclick="editChat('${all.nameofuser}'); event.stopPropagation();">Edit</button>
+    <button id='delchat' onclick="delchat('${all.ofuser}'); event.stopPropagation();">Delete</button>
+</div>`;
 }).join('');
+window.editChat = editChat
+async function editChat(userId) {
 
+    // const user = alluser.find(user => user.nameofuser === userId);
 
+    // if (!user) {
+    //     console.error("User not found");
+    //     return;
+    // }
 
+    const { value: newText } = await Swal.fire({
+        title: 'Edit your message',
+        input: 'text',
+        inputValue: userId,
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        cancelButtonText: 'Cancel',
+        inputValidator: (value) => {
+            if (!value) {
+                return 'You need to write something!';
+            }
+        }
+    });
+
+    if (newText) {
+        const userIndex = alluser.findIndex(user => user.nameofuser === userId);
+        console.log(userIndex);
+
+        if (userIndex > -1) {
+            alluser[userIndex].nameofuser = newText;
+            localStorage.setItem('users', JSON.stringify(alluser));
+            location.reload()
+        }
+    }
+    // alluser.splice(userIndex, 1);
+    // localStorage.setItem('users', JSON.stringify(alluser));
+}
+window.edityourname = edityourname
+async function edityourname() {
+    const { value: newText } = await Swal.fire({
+        title: 'Edit your name',
+        input: 'text',
+        inputValue: localStorage.getItem('currentUsers'),
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        cancelButtonText: 'Cancel',
+        inputValidator: (value) => {
+            if (!value) {
+                return 'You need to write something!';
+            }
+        }
+    });
+
+    if (newText) {
+        localStorage.setItem('currentUsers', newText)
+        location.reload()
+    }
+}
+window.edityourprofile = edityourprofile
+
+async function edityourprofile() {
+    const fileInput = document.getElementById('imageInput');
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please select an image.");
+        return;
+    }
+
+    // Create a reference to the file in Firebase Storage
+    const storageRef = ref(storage, `profileImages/${file.name}`);
+
+    try {
+        // Upload the file
+        await uploadBytes(storageRef, file);
+
+        // Get the download URL
+        const imageUrl = await getDownloadURL(storageRef);
+
+        // Save the download URL to local storage
+        localStorage.setItem('uploadedFileURL', imageUrl);
+
+        alert("Image uploaded successfully!");
+        location.reload()
+    } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Error uploading image. Please try again.");
+    }
+}
 window.chooseChat = chooseChat
 async function addNew() {
 
@@ -307,13 +394,14 @@ async function handleFileUpload(event) {
     }
 
     try {
-        const storageRef = ref(storage, `images/${file.name}`);
+        const storageRef = ref(storage, `profileImages/${file.name}`);
         await uploadBytes(storageRef, file);
 
         const imageUrl = await getDownloadURL(storageRef);
 
         // Save the download URL to local storage
         localStorage.setItem('uploadedFileURL', imageUrl);
+        document.getElementById('file--Input').style.display = 'none'
 
     } catch (error) {
         console.error('Upload failed:', error);
@@ -520,6 +608,7 @@ function addMessageActionHandlers() {
 
             if (result.isConfirmed) {
                 await deleteDoc(doc(db, currentuserid, messageId));
+
             }
         });
     });
@@ -534,7 +623,7 @@ function addMessageActionHandlers() {
                 title: 'Edit your message',
                 input: 'text',
                 inputValue: messageText,
-                showCancelButton: true, 
+                showCancelButton: true,
                 confirmButtonText: 'Save',
                 cancelButtonText: 'Cancel',
                 inputValidator: (value) => {

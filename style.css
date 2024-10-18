@@ -160,15 +160,27 @@ body {
 }
 #delchat{
   height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: hsl(146, 100%, 95%);
+    color: rgb(0, 0, 0);
+    border: none;
+    width: 70px;
+    margin-right: 30px;
+  
+  
+}
+
+#editchat{
+  height: 30px;
   font-size: 16px;
   cursor: pointer;
   background-color: hsl(146, 100%, 95%);
   color: rgb(0, 0, 0);
   border: none;
-  width: 70px;
-  margin-right: 30px;
+  width: 50px; /* Specific width for the edit button */
+  margin-right: 10px;
   margin-left: auto;
-  
 }
 #menu {
   position: fixed;

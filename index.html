@@ -29,9 +29,11 @@
 
         <center>
             <button onclick="addNew()" class="btn">Add New Contact</button>
-
-
             <button onclick="addExist()" class="btn">Add Existing Contact</button>
+            <br><br>
+            <button onclick="edityourname()" class="btn">Edit Your Name</button>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="edityourprofile()">
+            <button onclick="document.getElementById('imageInput').click();" class="btn">Edit Your Profile</button>
             <br><br><br>
             <div id="all-chat-div"></div>
         </center>
