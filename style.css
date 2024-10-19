@@ -46,13 +46,34 @@ body {
   border-radius: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(241, 241, 241);
+}
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .styleofdiv {
   opacity: 0; /* Start invisible */
-  animation: slideI 2s ease forwards;
-  width: 100vw;
+  /* animation: slideI 2s ease forwards; */
+  width: calc(100vw - 20px);
   background-color: #cef5ff;
   height: 40px;
   display: flex;
@@ -105,17 +126,15 @@ body {
   align-items: center;
   flex-direction: row-reverse;
 }
-@keyframes slideI {
-  from {
-      transform: translateX(-100%);
-      opacity: 0;
-  }
-  to {
-      transform: translateX(0);
-      opacity: 1;
-  }
+
+.slide-in-left {
+  animation: slideInLeft 2s ease forwards;
 }
 
+.slide-in-right {
+  animation: slideInRight 2s ease forwards;
+}
+/* 
 @keyframes slideIn {
   from {
       transform: translateX(-100%);
@@ -129,8 +148,8 @@ body {
 
 .message {
   animation: slideIn 2s ease forwards;
-  opacity: 0; /* Start invisible for animation */
-}
+  opacity: 0; Start invisible for animation
+} */
 
 .audio-message {
   width: 95%;
@@ -219,9 +238,7 @@ body {
   color: rgb(0, 0, 0);
   border: none;
   width: 70px;
-  margin-right: 30px;
-
-
+  margin-right: 10px;
 }
 
 #editchat {
@@ -436,16 +453,16 @@ body {
 #nameofu {
   font-size: 20px;
   font-weight: bold;
-  margin-top: 7px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 
 #pofu {
   margin-left: 10px;
   border-radius: 20px;
-  width: 30px;
-  height: 30px;
-  border: 3px solid rgb(161, 161, 161);
+  width:40px;
+  height: 40px;
+  border: 1 px solid rgb(161, 161, 161);
 }
 
 #btn-reveal {

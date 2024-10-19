@@ -14,7 +14,7 @@
 
 <body>
     <center>
-        <div id="show"><br>
+        <div id="show"><br><br><br>
             <input type="text" id="nameOfUser" placeholder="Your Name">
             <button onclick="selectUser()">Add</button><br><br>
             <input type="file" id="file--Input">
@@ -38,7 +38,7 @@
             <div class="wrapper">
                 <div id="reveal-content" class="hide">
                     <div id="json-content">
-
+                        <hr>
                         <div style="display: flex;margin-top: 10px;align-self: center;">
                             <span>
                                 <img id="pofu" src="" alt="">
@@ -47,10 +47,11 @@
 
                             </span>
                         </div>
+                        <hr>
 
                         <button onclick="addNew()" class="btn">Add New Contact</button>
                         <button onclick="addExist()" class="btn">Add Existing Contact</button>
-                        <br><br>
+                        <br>
                         <button onclick="edityourname()" class="btn">Edit Your Name</button>
                         <input type="file" id="imageInput" accept="image/*" style="display: none;"
                             onchange="edityourprofile()">

@@ -149,7 +149,7 @@ function renderChats(usersToRender) {
         return `<div onclick="chooseChat('${all.idofuser}','${all.nameofuser}')" class="styleofdiv" data-id="${all.idofuser}">
                     ${all.nameofuser}
                     <button id='editchat' onclick="editChat('${all.nameofuser}'); event.stopPropagation();">Edit</button>
-                    <button id='delchat' onclick="delchat('${all.ofuser}'); event.stopPropagation();">Delete</button>
+                    <button id='delchat' onclick="delchat('${all.idofuser}'); event.stopPropagation();">Delete</button>
                 </div>`;
     }).join('');
 
@@ -802,4 +802,14 @@ document.getElementById("btn-reveal").addEventListener('click', function() {
   });
   
   document.getElementById('nameofu').textContent = localStorage.getItem('currentUsers')
-  document.getElementById('pofu').src = localStorage.getItem('uploadedFileURL')
+  document.getElementById('pofu').src = localStorage.getItem('uploadedFileURL') || 'https://cdn-icons-png.flaticon.com/512/8847/8847419.png' 
+
+
+  const chatItems = document.querySelectorAll('.styleofdiv');
+chatItems.forEach((item, index) => {
+  if (index % 2 === 0) {
+    item.classList.add('slide-in-left');
+  } else {
+    item.classList.add('slide-in-right');
+  }
+});
