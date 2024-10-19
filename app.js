@@ -136,22 +136,42 @@ window.addNew = addNew
 window.addExist = addExist
 
 
-
-let alluser = []
-
-let users = localStorage.getItem('users')
+let users = localStorage.getItem('users');
+let alluser = [];
 
 if (users !== null) {
-    alluser = JSON.parse(users)
+    alluser = JSON.parse(users);
 }
-let div = document.getElementById('all-chat-div');
-div.innerHTML = alluser.map(all => {
-    return `<div onclick="chooseChat('${all.idofuser}','${all.nameofuser}')" class="styleofdiv">
-    ${all.nameofuser}
-    <button id='editchat' onclick="editChat('${all.nameofuser}'); event.stopPropagation();">Edit</button>
-    <button id='delchat' onclick="delchat('${all.ofuser}'); event.stopPropagation();">Delete</button>
-</div>`;
-}).join('');
+
+function renderChats(usersToRender) {
+    let div = document.getElementById('all-chat-div');
+    div.innerHTML = usersToRender.map(all => {
+        return `<div onclick="chooseChat('${all.idofuser}','${all.nameofuser}')" class="styleofdiv" data-id="${all.idofuser}">
+                    ${all.nameofuser}
+                    <button id='editchat' onclick="editChat('${all.nameofuser}'); event.stopPropagation();">Edit</button>
+                    <button id='delchat' onclick="delchat('${all.ofuser}'); event.stopPropagation();">Delete</button>
+                </div>`;
+    }).join('');
+
+    // Trigger animation for newly added chat items
+    const chatDivs = div.children;
+    for (let i = 0; i < chatDivs.length; i++) {
+        chatDivs[i].style.opacity = '1'; // Make them visible to trigger animation
+    }
+}
+window.filterChats = filterChats
+function filterChats() {
+    const searchValue = document.getElementById('searchInputss').value.toLowerCase();
+    const filteredUsers = alluser.filter(all => 
+        all.nameofuser.toLowerCase().includes(searchValue)
+    );
+    renderChats(filteredUsers);
+}
+
+// Initial render
+renderChats(alluser);
+
+
 window.editChat = editChat
 async function editChat(userId) {
 
@@ -220,14 +240,16 @@ async function edityourprofile() {
         alert("Please select an image.");
         return;
     }
-
+    
     // Create a reference to the file in Firebase Storage
+    
     const storageRef = ref(storage, `profileImages/${file.name}`);
-
+    
     try {
+        document.getElementById('loaderf').style.display = 'block';
         // Upload the file
         await uploadBytes(storageRef, file);
-
+        
         // Get the download URL
         const imageUrl = await getDownloadURL(storageRef);
 
@@ -235,6 +257,8 @@ async function edityourprofile() {
         localStorage.setItem('uploadedFileURL', imageUrl);
 
         alert("Image uploaded successfully!");
+        document.getElementById('loaderf').style.display = 'none';
+
         location.reload()
     } catch (error) {
         console.error("Error uploading image:", error);
@@ -384,6 +408,8 @@ function selectUser() {
 document.getElementById('file--Input').addEventListener('change', handleFileUpload);
 
 async function handleFileUpload(event) {
+    document.getElementById('loaderf').style.display = 'block';
+
     const file = event.target.files[0];
 
 
@@ -402,6 +428,8 @@ async function handleFileUpload(event) {
         // Save the download URL to local storage
         localStorage.setItem('uploadedFileURL', imageUrl);
         document.getElementById('file--Input').style.display = 'none'
+        document.getElementById('loaderf').style.display = 'none';
+
 
     } catch (error) {
         console.error('Upload failed:', error);
@@ -761,3 +789,17 @@ function bot() {
         behavior: 'smooth'
     });
 }
+
+
+
+document.getElementById("btn-reveal").addEventListener('click', function() {
+    let el = document.getElementById('reveal-content');
+    if (el.classList.contains('hide')) {
+      el.classList.remove('hide');
+    } else {
+      el.classList.add('hide');
+    }
+  });
+  
+  document.getElementById('nameofu').textContent = localStorage.getItem('currentUsers')
+  document.getElementById('pofu').src = localStorage.getItem('uploadedFileURL')

@@ -23,30 +23,57 @@
     </center>
     <div id="all-chat">
         <div
-            style="position: fixed; display: flex; justify-content: center; align-items: center; width: 100vw; font-size: 30px; background-color: white; height: 40px;">
-            Messenger
+            style="position: fixed; display: flex; justify-content: space-between;align-items: center; width: 90vw; font-size: 30px; background-color: white; height: 40px;top: 1px;margin-left: 5vw;">
+            <span style="color: rgb(57, 196, 64);">
+
+                Messenger
+            </span>
+            <button type="button" id="btn-reveal" class="btn"><i class="fa-solid fa-gear"></i></button>
         </div><br><br>
+        <div id="loaderf" style="display: none;">Loading...</div>
 
         <center>
-            <button onclick="addNew()" class="btn">Add New Contact</button>
-            <button onclick="addExist()" class="btn">Add Existing Contact</button>
-            <br><br>
-            <button onclick="edityourname()" class="btn">Edit Your Name</button>
-            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="edityourprofile()">
-            <button onclick="document.getElementById('imageInput').click();" class="btn">Edit Your Profile</button>
-            <br><br><br>
+
+
+            <div class="wrapper">
+                <div id="reveal-content" class="hide">
+                    <div id="json-content">
+
+                        <div style="display: flex;margin-top: 10px;align-self: center;">
+                            <span>
+                                <img id="pofu" src="" alt="">
+                            </span>
+                            <span id="nameofu">
+
+                            </span>
+                        </div>
+
+                        <button onclick="addNew()" class="btn">Add New Contact</button>
+                        <button onclick="addExist()" class="btn">Add Existing Contact</button>
+                        <br><br>
+                        <button onclick="edityourname()" class="btn">Edit Your Name</button>
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;"
+                            onchange="edityourprofile()">
+                        <button onclick="document.getElementById('imageInput').click();" class="btn">Edit Your
+                            Profile</button>
+                    </div>
+                </div>
+            </div>
+            <input type="text" id="searchInputss" placeholder="Search..." onkeyup="filterChats()">
             <div id="all-chat-div"></div>
+
+
         </center>
     </div>
 
     <div id="chat-history">
-        <div style="width: 20vw; background-color: rgb(255, 255, 255); position: fixed;">
+        <div style="width: 20vw; background-color: rgb(255, 255, 255); position: fixed;z-index: 1;">
             <i style="background-color:transparent; color: blue; border: none; border-radius: 10px; padding: 5px 18px; font-size: x-large; border-top-left-radius: 50px; border-bottom-left-radius: 50px;"
                 onclick="gotoback()" class="fa-solid fa-chevron-left"></i>
         </div>
 
         <div id="nameoftop"
-            style="width: 60vw; background-color: rgb(255, 255, 255); position: fixed; left: 20vw; height: 34px; display: flex; justify-content: flex-start; align-items: center;font-weight: bold;">
+            style="width: 60vw; background-color: rgb(255, 255, 255); position: fixed; left: 20vw; height: 34px; display: flex; justify-content: flex-start; align-items: center;font-weight: bold;z-index: 1;">
         </div>
 
         <div id="menu">
@@ -73,7 +100,7 @@
                     <textarea id="messageInput" placeholder="Type your message"></textarea>
                     <button id="recordButton"><i class="fa-solid fa-microphone"></i></button>
                     <audio id="audioPlayer" style="display: none;" controls></audio>
-                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
                     <img id="uploadButton" src="./images.png" alt="Upload Image">
                     <button id="sendButton"
                         style="font-size: x-large; background-color: transparent; border: none; color: green; margin-left: -10px;">

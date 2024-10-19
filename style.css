@@ -13,6 +13,7 @@ body {
   justify-content: flex-end;
   /* Push content to the bottom */
 }
+
 #loader {
   position: fixed;
   top: 50%;
@@ -22,11 +23,35 @@ body {
   color: white;
   padding: 20px;
   border-radius: 5px;
-  z-index: 1000; /* Make sure it appears above other elements */
+  z-index: 1000;
+  /* Make sure it appears above other elements */
 }
 
+#loaderf {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  /* Make sure it appears above other elements */
+}
+#searchInputss {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  border-radius: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(238, 238, 238);
+}
 
 .styleofdiv {
+  opacity: 0; /* Start invisible */
+  animation: slideI 2s ease forwards;
   width: 100vw;
   background-color: #cef5ff;
   height: 40px;
@@ -37,12 +62,13 @@ body {
   margin-bottom: 3px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn {
-  background-color: blue;
-  color: white;
+  background-color: rgb(0, 255, 191);
+  color: rgb(0, 0, 0);
   width: 100px;
   border: none;
   border-radius: 20px;
@@ -67,7 +93,7 @@ body {
 .edit-button {
   width: 39px;
   font-size: 8.5px;
-  margin-top: 15px;
+  margin-top: 2px;
   background-color: transparent;
   border: none;
   padding-top: 5px;
@@ -78,6 +104,32 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-direction: row-reverse;
+}
+@keyframes slideI {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.message {
+  animation: slideIn 2s ease forwards;
+  opacity: 0; /* Start invisible for animation */
 }
 
 .audio-message {
@@ -158,34 +210,37 @@ body {
   border: none;
   border-top: 1px solid black;
 }
-#delchat{
-  height: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: hsl(146, 100%, 95%);
-    color: rgb(0, 0, 0);
-    border: none;
-    width: 70px;
-    margin-right: 30px;
-  
-  
-}
 
-#editchat{
+#delchat {
   height: 30px;
   font-size: 16px;
   cursor: pointer;
   background-color: hsl(146, 100%, 95%);
   color: rgb(0, 0, 0);
   border: none;
-  width: 50px; /* Specific width for the edit button */
+  width: 70px;
+  margin-right: 30px;
+
+
+}
+
+#editchat {
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: hsl(146, 100%, 95%);
+  color: rgb(0, 0, 0);
+  border: none;
+  width: 50px;
+  /* Specific width for the edit button */
   margin-right: 10px;
   margin-left: auto;
 }
+
 #menu {
   position: fixed;
   width: 20vw;
-  left: calc((100vw - 205px)/2 );
+  left: calc((100vw - 205px)/2);
   z-index: 1;
   color: black;
   height: 34px;
@@ -198,7 +253,7 @@ body {
 #menuButton {
   position: fixed;
   background-color: white !important;
-  width: 20vw ;
+  width: 20vw;
   left: 80vw;
   color: black;
   height: 34px;
@@ -208,19 +263,22 @@ body {
 
 }
 
-  #imgsize {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px; /* Optional: add space between image and text */
-    margin-top: -8px;
-    margin-bottom: 5px;
-    border-radius: 20px;
+#imgsize {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  /* Optional: add space between image and text */
+  margin-top: -8px;
+  margin-bottom: 5px;
+  border-radius: 20px;
 }
 
 .cont {
   display: flex;
-  align-items: center; /* Vertically center the items */
+  align-items: center;
+  /* Vertically center the items */
 }
+
 #none {
   display: none;
 }
@@ -310,12 +368,12 @@ body {
   font-size: 12px;
   /* Smaller font for timestamp */
   color: rgb(87, 87, 87);
-  margin-top: 15px;
+  margin-top: -2px;
   align-self: flex-end;
   /* Space between message text and timestamp */
 }
 
-.message  {
+.message {
   max-width: 100%;
   /* Adjust image width */
   height: auto;
@@ -368,8 +426,47 @@ body {
   width: 60px;
   height: 60px;
 }
+
 .nameofmember {
   font-size: 10px;
   margin-top: -5px;
   text-align: left;
+}
+
+#nameofu {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-left: 10px;
+}
+
+#pofu {
+  margin-left: 10px;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgb(161, 161, 161);
+}
+
+#btn-reveal {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: rgb(30, 102, 33);
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+#reveal-content {
+  max-height: 1000px;
+  transition: all 0.5s ease-in;
+}
+
+.hide {
+  max-height: 0 !important;
+  transition: all 0.5s ease-out;
 }
