@@ -63,7 +63,7 @@ async function delchat(userIdToDelete) {
     }
 }
 
-let currentuserid = '1421895918'
+let currentuserid;
 
 
 let collectionidofuser = document.getElementById('collectionidofuser')
@@ -119,19 +119,16 @@ function go() {
     document.getElementById('all-chat').style.display = 'none'
 }
 window.gotoback = gotoback
-function gotoback() {
+async function gotoback() {
     // Hide the chat history and show the all chat section
     document.getElementById('chat-history').style.display = 'none';
     document.getElementById('all-chat').style.display = 'block';
 
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Smooth scroll
-    });
+    window.scrollTo(0, 0);
+
 }
+
+
 
 window.addEventListener('click', function (event) {
     if (event.target.id === 'backButton') {
