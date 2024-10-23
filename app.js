@@ -120,9 +120,19 @@ function go() {
 }
 window.gotoback = gotoback
 function gotoback() {
-    document.getElementById('chat-history').style.display = 'none'
-    document.getElementById('all-chat').style.display = 'block'
+    // Hide the chat history and show the all chat section
+    document.getElementById('chat-history').style.display = 'none';
+    document.getElementById('all-chat').style.display = 'block';
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scroll
+    });
 }
+
 window.addEventListener('click', function (event) {
     if (event.target.id === 'backButton') {
         gotoback();
@@ -162,7 +172,7 @@ function renderChats(usersToRender) {
 window.filterChats = filterChats
 function filterChats() {
     const searchValue = document.getElementById('searchInputss').value.toLowerCase();
-    const filteredUsers = alluser.filter(all => 
+    const filteredUsers = alluser.filter(all =>
         all.nameofuser.toLowerCase().includes(searchValue)
     );
     renderChats(filteredUsers);
@@ -240,16 +250,16 @@ async function edityourprofile() {
         alert("Please select an image.");
         return;
     }
-    
+
     // Create a reference to the file in Firebase Storage
-    
+
     const storageRef = ref(storage, `profileImages/${file.name}`);
-    
+
     try {
         document.getElementById('loaderf').style.display = 'block';
         // Upload the file
         await uploadBytes(storageRef, file);
-        
+
         // Get the download URL
         const imageUrl = await getDownloadURL(storageRef);
 
@@ -792,24 +802,24 @@ function bot() {
 
 
 
-document.getElementById("btn-reveal").addEventListener('click', function() {
+document.getElementById("btn-reveal").addEventListener('click', function () {
     let el = document.getElementById('reveal-content');
     if (el.classList.contains('hide')) {
-      el.classList.remove('hide');
+        el.classList.remove('hide');
     } else {
-      el.classList.add('hide');
+        el.classList.add('hide');
     }
-  });
-  
-  document.getElementById('nameofu').textContent = localStorage.getItem('currentUsers')
-  document.getElementById('pofu').src = localStorage.getItem('uploadedFileURL') || 'https://cdn-icons-png.flaticon.com/512/8847/8847419.png' 
+});
+
+document.getElementById('nameofu').textContent = localStorage.getItem('currentUsers')
+document.getElementById('pofu').src = localStorage.getItem('uploadedFileURL') || 'https://cdn-icons-png.flaticon.com/512/8847/8847419.png'
 
 
-  const chatItems = document.querySelectorAll('.styleofdiv');
+const chatItems = document.querySelectorAll('.styleofdiv');
 chatItems.forEach((item, index) => {
-  if (index % 2 === 0) {
-    item.classList.add('slide-in-left');
-  } else {
-    item.classList.add('slide-in-right');
-  }
+    if (index % 2 === 0) {
+        item.classList.add('slide-in-left');
+    } else {
+        item.classList.add('slide-in-right');
+    }
 });
